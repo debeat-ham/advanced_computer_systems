@@ -1,14 +1,31 @@
-src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 64 byte vectors
-src/benchmark_saxpy.cpp:10:31: optimized:  loop versioned for vectorization because of possible aliasing
-src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 32 byte vectors
-src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 64 byte vectors
-src/benchmark_saxpy.cpp:10:31: optimized:  loop versioned for vectorization because of possible aliasing
-src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 32 byte vectors
-src/benchmark_saxpy.cpp:45:31: optimized: loop vectorized using 64 byte vectors
-src/benchmark_saxpy.cpp:45:31: optimized: loop vectorized using 32 byte vectors
-src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 64 byte vectors
-src/benchmark_saxpy.cpp:10:31: optimized:  loop versioned for vectorization because of possible aliasing
-src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 32 byte vectors
-src/benchmark_saxpy.cpp:33:31: optimized: loop vectorized using 64 byte vectors
-src/benchmark_saxpy.cpp:33:31: optimized:  loop versioned for vectorization because of possible aliasing
-src/benchmark_saxpy.cpp:33:31: optimized: loop vectorized using 32 byte vectors
+/usr/include/c++/13/bits/move.h:198:11: optimized: basic block part vectorized using 64 byte vectors
+src/benchmark.cpp:37:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:37:31: optimized: loop vectorized using 32 byte vectors
+src/benchmark.cpp:44:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:44:31: optimized: loop vectorized using 32 byte vectors
+src/benchmark.cpp:52:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:52:31: optimized: loop vectorized using 32 byte vectors
+/usr/include/c++/13/bits/vector.tcc:96:27: optimized: basic block part vectorized using 64 byte vectors
+src/benchmark.cpp:37:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:37:31: optimized: loop vectorized using 32 byte vectors
+src/benchmark.cpp:44:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:44:31: optimized: loop vectorized using 32 byte vectors
+src/benchmark.cpp:52:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:52:31: optimized: loop vectorized using 32 byte vectors
+/usr/include/c++/13/bits/vector.tcc:521:30: optimized: basic block part vectorized using 64 byte vectors
+src/benchmark.cpp:80:39: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:80:39: optimized: loop vectorized using 32 byte vectors
+src/benchmark.cpp:80:39: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:80:39: optimized: loop vectorized using 32 byte vectors
+src/benchmark.cpp:72:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:72:31: optimized:  loop versioned for vectorization because of possible aliasing
+src/benchmark.cpp:72:31: optimized: loop vectorized using 32 byte vectors
+/usr/include/c++/13/bits/stl_vector.h:398:25: optimized: basic block part vectorized using 64 byte vectors
+src/benchmark.cpp:80:39: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:80:39: optimized: loop vectorized using 32 byte vectors
+src/benchmark.cpp:80:39: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:80:39: optimized: loop vectorized using 32 byte vectors
+src/benchmark.cpp:72:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark.cpp:72:31: optimized:  loop versioned for vectorization because of possible aliasing
+src/benchmark.cpp:72:31: optimized: loop vectorized using 32 byte vectors
+/usr/include/c++/13/bits/stl_vector.h:398:25: optimized: basic block part vectorized using 64 byte vectors
