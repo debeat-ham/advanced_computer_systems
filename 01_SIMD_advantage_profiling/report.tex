@@ -1,0 +1,578 @@
+\documentclass[11pt]{article}
+
+% ============================================================
+% Packages
+% ============================================================
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ============================================================
+% Hyperlinks
+% ============================================================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% ============================================================
+% Code formatting
+% ============================================================
+\lstset{
+    basicstyle=\ttfamily\small,
+    frame=single,
+    breaklines=true,
+    columns=fullflexible,
+    showstringspaces=false
+}
+
+% ============================================================
+% Document
+% ============================================================
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{ECSE 4320 Advanced Computer Systems}}\\[0.4em]
+    {\Large Project \#1: SIMD Advantage Profiling}\\[1em]
+
+    \textbf{Your Name}\\
+    Rensselaer Polytechnic Institute\\
+    Fall 2026\\[0.5em]
+
+    \textbf{GitHub Repository:}
+    \url{https://github.com/YOUR-USERNAME/YOUR-REPOSITORY}
+\end{center}
+
+\vspace{1em}
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+% Briefly explain the purpose of the project.
+%
+% Questions to answer:
+% - What is SIMD?
+% - What are you trying to measure?
+% - Why might SIMD speedup differ from the theoretical vector width?
+% - What major factors will you investigate?
+%
+% Keep this concise. This is not meant to be a long literature review.
+
+[Write introduction here.]
+
+% ============================================================
+\section{Experimental Platform}
+% ============================================================
+
+All experiments were performed on the system described in
+Table~\ref{tab:system}.
+
+\begin{table}[H]
+    \centering
+    \caption{Experimental system configuration.}
+    \label{tab:system}
+    \begin{tabular}{ll}
+        \toprule
+        \textbf{Component} & \textbf{Configuration} \\
+        \midrule
+        CPU model & AMD Ryzen 7 260 \\
+        Physical cores & 8 \\
+        Threads & 16 \\
+        Logical CPUs / SMT & 16 \\
+        SIMD ISA support & SSE, AVX, AVX2, AVX-512 \\
+        L1 cache & 32 KB per core \\
+        L2 cache & 1 MB per core \\
+        LLC / L3 cache & 16 MiB shared \\
+        RAM & 30 GB \\
+        Operating system & Linux Mint 22.3 \\
+        Kernel version & 7.0.0-38-generic \\
+        Compiler & GCC 13.3.0 \\
+        Python & 3.12.9 \\
+        CPU frequency policy/governor & powersave \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+% Explain HOW you obtained this information.
+% Do not simply fill the table with values you cannot explain.
+
+% ============================================================
+\section{Benchmark Methodology}
+% ============================================================
+
+\subsection{Selected Kernels}
+
+The following three or more computational kernels were evaluated:
+
+\begin{enumerate}
+    \item [Kernel 1]
+    \item [Kernel 2]
+    \item [Kernel 3]
+\end{enumerate}
+
+% Briefly define each kernel mathematically or with concise pseudocode.
+%
+% The project permits:
+% - SAXPY / AXPY
+% - dot product / reduction
+% - elementwise multiplication
+% - 1D three-point stencil
+
+\subsection{Correctness Validation}
+
+% Explain how you established that optimized/vectorized results
+% were numerically correct.
+%
+% Questions:
+% - What reference implementation did you use?
+% - How were results compared?
+% - Did floating-point rounding require a tolerance?
+% - Were multiple/random inputs tested?
+
+[Describe correctness procedure.]
+
+\subsection{Timing Method}
+
+% Explain exactly what is timed.
+%
+% Include:
+% - timer used
+% - whether initialization is outside timed region
+% - warm-up procedure, if any
+% - number of repetitions
+% - statistic reported (median, mean, minimum, etc.)
+% - how measurement variability is represented
+
+[Describe timing methodology.]
+
+\subsection{Compiler Configurations}
+
+Table~\ref{tab:compiler} summarizes the compiler configurations used
+for comparison.
+
+\begin{table}[H]
+    \centering
+    \caption{Compiler configurations.}
+    \label{tab:compiler}
+    \begin{tabular}{lll}
+        \toprule
+        \textbf{Configuration} & \textbf{Compiler Flags} & \textbf{Purpose} \\
+        \midrule
+        Scalar-only & [Fill in] & Disable vectorization \\
+        Auto-vectorized & [Fill in] & Allow compiler vectorization \\
+        CPU-targeted & [Fill in] & Target available CPU features \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+% Do not copy flags here until you understand what each one does.
+% Record the exact command lines used in the experiment.
+
+% ============================================================
+\section{Experiment 1: Scalar vs.\ SIMD}
+% ============================================================
+
+\subsection{Question}
+
+% What specific question does this experiment answer?
+
+[Write experimental question.]
+
+\subsection{Hypothesis}
+
+% IMPORTANT: Write what you expected BEFORE discussing the results.
+% Explain WHY based on architecture.
+
+[Write pre-experiment hypothesis.]
+
+\subsection{Experimental Setup}
+
+% State:
+% - which kernels
+% - N / working-set sizes
+% - datatype
+% - compiler configurations
+% - controlled variables
+% - repetitions
+% - metric(s)
+
+[Describe setup.]
+
+\subsection{Results}
+
+% Replace placeholder filename with your generated plot.
+
+The SIMD speedup is calculated as
+
+\begin{equation}
+    S_{\mathrm{SIMD}}
+    =
+    \frac{T_{\mathrm{scalar}}}
+         {T_{\mathrm{SIMD}}}.
+\end{equation}
+
+\subsection{Analysis}
+
+% Don't merely say "SIMD was faster."
+%
+% Explain:
+% - How large was the speedup?
+% - Did it change with N?
+% - Did different kernels behave differently?
+% - Was speedup close to vector width?
+% - What architectural limitation(s) explain the result?
+
+[Analyze results.]
+
+% ============================================================
+\section{Experiment 2: Working-Set Size and Cache Locality}
+% ============================================================
+
+\subsection{Question}
+[Write question.]
+
+\subsection{Hypothesis}
+[Write hypothesis before discussing results.]
+
+\subsection{Experimental Setup}
+
+% Sweep N from small arrays through increasingly large working sets.
+% Explain how the chosen sizes relate to L1, L2, LLC, and DRAM.
+
+[Describe setup.]
+
+\subsection{Results}
+x
+
+\subsection{Analysis}
+x
+% Discuss:
+% - transitions associated with cache levels
+% - when SIMD gains compress
+% - evidence that the workload becomes memory-bound
+% - relevant performance-counter evidence, if collected
+
+[Analyze results.]
+
+% ============================================================
+\section{Experiment 3: Alignment and Tail Handling}
+% ============================================================
+
+\subsection{Question}
+[Write question.]
+
+\subsection{Hypothesis}
+[Write hypothesis.]
+
+\subsection{Experimental Setup}
+
+% Compare:
+% - aligned vs intentionally shifted/misaligned data
+% - sizes divisible by vector width vs sizes with a remainder
+
+[Describe setup.]
+
+\subsection{Results}
+x
+
+\subsection{Analysis}
+x
+% Possible things to investigate:
+% - unaligned loads/stores
+% - scalar cleanup loops
+% - masking
+% - prologue/epilogue overhead
+%
+% Only claim mechanisms supported by your evidence.
+
+[Analyze results.]
+
+% ============================================================
+\section{Experiment 4: Stride and Access Pattern}
+% ============================================================
+
+\subsection{Question}
+[Write question.]
+
+\subsection{Hypothesis}
+[Write hypothesis.]
+
+\subsection{Experimental Setup}
+
+% Typical comparison:
+% stride = 1, 2, 4, 8
+%
+% State exactly how your benchmark defines stride so that
+% comparisons remain fair.
+
+[Describe setup.]
+
+\subsection{Results}
+x
+
+\subsection{Analysis}
+
+% Discuss:
+% - spatial locality
+% - effective memory bandwidth
+% - cache-line utilization
+% - SIMD efficiency
+% - gather-like behavior if applicable
+
+[Analyze results.]
+
+% ============================================================
+\section{Experiment 5: Data Type}
+% ============================================================
+
+\subsection{Question}
+[Write question.]
+
+\subsection{Hypothesis}
+[Write hypothesis.]
+
+\subsection{Experimental Setup}
+
+% Required comparison includes float32 vs float64.
+% Explain how everything except datatype was controlled.
+
+[Describe setup.]
+
+\subsection{Results}
+x
+
+\subsection{Analysis}
+
+% Discuss:
+% - SIMD lane count
+% - bytes moved per element
+% - operation cost
+% - arithmetic intensity where relevant
+
+[Analyze results.]
+
+% ============================================================
+\section{Vectorization Verification}
+% ============================================================
+
+% The assignment explicitly requires evidence that SIMD occurred.
+%
+% Include concise evidence, NOT pages of assembly.
+%
+% You might include:
+% 1. relevant compiler vectorization report
+% 2. a very small disassembly excerpt
+%
+% Explain what the evidence means.
+
+\subsection{Compiler Vectorization Report}
+
+\begin{lstlisting}
+[Insert a SHORT relevant compiler-report excerpt.]
+\end{lstlisting}
+
+[Explain what the compiler report demonstrates.]
+
+\subsection{Disassembly Evidence}
+
+\begin{lstlisting}
+[Insert only a few relevant assembly instructions.]
+\end{lstlisting}
+
+% Explain the instructions you identify.
+% Do not paste assembly that you cannot explain.
+
+[Explain why this constitutes evidence of vector execution.]
+
+% ============================================================
+\section{Performance-Counter Analysis}
+% ============================================================
+
+% Include perf or equivalent counters where they contribute to
+% your architectural explanation.
+%
+% Avoid dumping every available counter into a table.
+% Choose counters that help answer your experimental questions.
+
+\begin{table}[H]
+    \centering
+    \caption{Selected performance-counter measurements.}
+    \label{tab:counters}
+    \begin{tabular}{lrr}
+        \toprule
+        \textbf{Metric} & \textbf{Case A} & \textbf{Case B} \\
+        \midrule
+        Cycles & [Fill in] & [Fill in] \\
+        Instructions & [Fill in] & [Fill in] \\
+        Cache-related metric & [Fill in] & [Fill in] \\
+        Other relevant metric & [Fill in] & [Fill in] \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+[Interpret the counters rather than simply listing them.]
+
+% ============================================================
+\section{Roofline Analysis}
+% ============================================================
+
+\subsection{Arithmetic Intensity}
+
+Arithmetic intensity is defined as
+
+\begin{equation}
+    AI =
+    \frac{\text{floating-point operations}}
+         {\text{bytes transferred}}.
+\end{equation}
+
+% Derive AI for at least one selected kernel.
+% Be explicit about assumptions regarding memory traffic.
+
+[Show your calculation.]
+
+\subsection{Machine Limits}
+
+The Roofline performance bound can be written as
+
+\begin{equation}
+    P_{\mathrm{attainable}}
+    \leq
+    \min\left(
+        P_{\mathrm{peak}},
+        AI \times B_{\mathrm{memory}}
+    \right),
+\end{equation}
+
+where $P_{\mathrm{peak}}$ is the estimated peak floating-point
+throughput and $B_{\mathrm{memory}}$ is measured memory bandwidth.
+
+% Explain how you obtained BOTH quantities.
+% Do not substitute unexplained internet specifications for measured
+% values where the assignment specifically asks for measured bandwidth.
+
+[Describe peak-performance and bandwidth estimates.]
+
+\subsection{Interpretation}
+
+% Is your selected kernel compute-bound or memory-bound?
+% Does its measured behavior agree with the Roofline reasoning?
+% If not, what other limitations may matter?
+
+[Write Roofline interpretation.]
+
+% Optional figure if you construct an actual Roofline plot:
+%
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.80\textwidth]{figures/roofline.pdf}
+%     \caption{Roofline analysis of the selected kernel.}
+%     \label{fig:roofline}
+% \end{figure}
+
+% ============================================================
+\section{Negative / Failure Case}
+% ============================================================
+
+\subsection{Hypothesis}
+
+% Identify a situation in which an apparently useful optimization
+% may fail, or an apparently SIMD-friendly loop may not behave as expected.
+
+[Write hypothesis.]
+
+\subsection{Results}
+
+[Present measurement/figure/table.]
+
+\subsection{Explanation}
+
+% The project specifically requires a meaningful negative example.
+%
+% Explain WHY the expected optimization did not help.
+% Verify the mechanism where possible rather than guessing.
+
+[Explain failure case.]
+
+% ============================================================
+\section{Experimental Limitations and Anomalies}
+% ============================================================
+
+% Discuss:
+% - unexplained or unexpected measurements
+% - measurement noise
+% - hardware/tool limitations
+% - counters you could not access
+% - assumptions
+%
+% Do not hide anomalous results.
+
+[Discuss limitations and anomalies.]
+
+% ============================================================
+\section{AI Use Statement}
+% ============================================================
+
+% The assignment explicitly requires this.
+%
+% State:
+% - which AI tool(s) you used
+% - what tasks AI assisted with
+% - what code/methodology/results you independently tested
+% - anything suggested by AI that you modified or rejected
+%
+% Be specific and truthful.
+
+[Write AI-use statement.]
+
+% ============================================================
+\section{Reproducibility}
+% ============================================================
+
+% Briefly explain how someone can reproduce your experiments.
+%
+% Point to:
+% - source code
+% - build scripts
+% - run scripts
+% - raw data
+% - processed data
+% - plotting scripts
+% - README
+
+The complete source code, scripts, raw measurements, processed data,
+and plotting code are available in the project repository:
+
+\begin{center}
+    \url{https://github.com/YOUR-USERNAME/YOUR-REPOSITORY}
+\end{center}
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+% Answer the big questions:
+%
+% - When did SIMD provide substantial speedup?
+% - When did it provide limited speedup?
+% - What architectural factors mattered most?
+% - What practical lesson did you learn about SIMD optimization?
+%
+% Keep this concise and quantitative.
+
+[Write conclusion.]
+
+\end{document}

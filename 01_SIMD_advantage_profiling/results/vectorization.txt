@@ -1,0 +1,14 @@
+src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark_saxpy.cpp:10:31: optimized:  loop versioned for vectorization because of possible aliasing
+src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 32 byte vectors
+src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark_saxpy.cpp:10:31: optimized:  loop versioned for vectorization because of possible aliasing
+src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 32 byte vectors
+src/benchmark_saxpy.cpp:45:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark_saxpy.cpp:45:31: optimized: loop vectorized using 32 byte vectors
+src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark_saxpy.cpp:10:31: optimized:  loop versioned for vectorization because of possible aliasing
+src/benchmark_saxpy.cpp:10:31: optimized: loop vectorized using 32 byte vectors
+src/benchmark_saxpy.cpp:33:31: optimized: loop vectorized using 64 byte vectors
+src/benchmark_saxpy.cpp:33:31: optimized:  loop versioned for vectorization because of possible aliasing
+src/benchmark_saxpy.cpp:33:31: optimized: loop vectorized using 32 byte vectors
